@@ -5,7 +5,7 @@ const token = url_token.searchParams.get('token');
 
 //var token = Android.getToken();
 
-axios.defaults.baseURL ='http://fustekaicecream.test/api/v2/game';
+axios.defaults.baseURL ='https://new.fustekaice.com/api/v2/game';
 axios.defaults.headers.common['Authorization'] = "Bearer " + token;
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 
