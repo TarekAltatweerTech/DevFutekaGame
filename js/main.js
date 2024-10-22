@@ -7,9 +7,9 @@
  * START BUILD GAME - This is the function that runs build game
  *
  */
-function initMain(){
+function initMain() {
 	buildGameButton();
-	if ( typeof buildScoreBoardCanvas == 'function' ) {
+	if (typeof buildScoreBoardCanvas == 'function') {
 		buildScoreBoardCanvas();
 	}
 	buildGameStyle();
@@ -17,129 +17,109 @@ function initMain(){
 
 	goPage('main');
 
-	if($.editor.enable && $('#mainHolder').hasClass('jsondata')){
+	if ($.editor.enable && $('#mainHolder').hasClass('jsondata')) {
 		loadTemplateJSON('template.json');
-	}else{
+	} else {
 		//member
-		if(typeof memberData != 'undefined' && memberSettings.enableMembership){
+		if (typeof memberData != 'undefined' && memberSettings.enableMembership) {
 			storeSettings();
 			buildMember();
-		}else{
+		} else {
 			// store the token in local storage
-            $('#buttonStart').hide();
-            //check the game status
-
-            axios.get('/check-game', {
-            })
-            .then(response =>{
-                if(response.data.data == 1){
-                    // change timer
-                    //timerSettings.timer = 0;
-                    // get questions
-                    axios.get("/questions-of-user", {
-                    }).then(response =>{
-                      	let questions = response.data.data;
-                        if(questions.length == 0){
-                            goPage('main');
-                            $('.preloadText').html('لا يوجد الاسئلة, الرجاء المحاولة مرة اخرى');
-                        }else{
-                            loadXML(questions);
-                        }
-                    })
-                    .catch( error => {
-                        if(error.response.status == 401){
-                            goPage('main');
-                            $('.preloadText').html('لا يسمح لك الدخول للعبة حاليا');
-                        }
-                        console.log(error);
-                    })
-                }else{
-                    goPage('main');
-                    $('.preloadText').html('لا يسمح لك الدخول للعبة حاليا');
-                }
-            })
-            .catch(error => {
-                    if(error.response.status == 401){
-                        goPage('main');
-                        $('.preloadText').html('لا يسمح لك الدخول للعبة حاليا');
-                    }
-
-            })
+			$('#buttonStart').hide();
+			//check the game status
+			axios.get("/questions-of-user", {
+			}).then(response => {
+				let questions = response.data.data;
+				if (questions.length == 0) {
+					goPage('main');
+					$('.preloadText').html('لا يوجد الاسئلة, الرجاء المحاولة مرة اخرى');
+				} else {
+					loadXML(questions);
+				}
+			})
+				.catch(error => {
+					if (error.response.status == 401) {
+						goPage('main');
+						$('.preloadText').html('لا يسمح لك الدخول للعبة حاليا');
+					}
+					console.log(error);
+				})
 		}
 	}
 }
 
-var windowW=windowH=0;
-var modeW=modeH=0;
-var scalePercent=0;
-var offset = {x:0, y:0, left:0, top:0};
+var windowW = windowH = 0;
+var modeW = modeH = 0;
+var scalePercent = 0;
+var offset = { x: 0, y: 0, left: 0, top: 0 };
 
 /*!
  *
  * GAME RESIZE - This is the function that runs to resize and centralize the game
  *
  */
-function resizeGameFunc(){
-	setTimeout(function() {
+function resizeGameFunc() {
+	setTimeout(function () {
 		windowW = window.innerWidth;
 		windowH = window.innerHeight;
 		detectScreenSize();
 
 		var newW = modeW;
 		var newH = modeH;
-		scalePercent = windowW/modeW;
+		scalePercent = windowW / modeW;
 
-		if(!$.editor.enable){
-			if(detectScreenSize()){
+		if (!$.editor.enable) {
+			if (detectScreenSize()) {
 				gameData.mode = 'portrait';
-			}else{
+			} else {
 				gameData.mode = 'landscape';
 			}
 
-			if(screenSettings.fitToScreen){
+			if (screenSettings.fitToScreen) {
 				newW = windowW;
 				newH = windowH;
 
-				if(screenSettings.maintainAspectRatio){
-					if(newW > modeW){
-						scalePercent = newW/modeW;
-						if((modeH*scalePercent)>newH){
-							scalePercent = newH/modeH;
+				if (screenSettings.maintainAspectRatio) {
+					if (newW > modeW) {
+						scalePercent = newW / modeW;
+						if ((modeH * scalePercent) > newH) {
+							scalePercent = newH / modeH;
 						}
 					}
 
-					newW = ((modeW)*scalePercent);
-					newH = ((modeH)*scalePercent);
+					newW = ((modeW) * scalePercent);
+					newH = ((modeH) * scalePercent);
 				}
-			}else{
+			} else {
 				scalePercent = scalePercent > 1 ? 1 : scalePercent;
-				newW = 	modeW > windowW ? windowW : modeW;
-				newH = 	modeH > windowH ? windowH : modeH;
+				newW = modeW > windowW ? windowW : modeW;
+				newH = modeH > windowH ? windowH : modeH;
 
-				if(screenSettings.maintainAspectRatio){
-					if(newW > modeW){
-						scalePercent = newW/modeW;
-						if((modeH*scalePercent)>newH){
-							scalePercent = newH/modeH;
+				if (screenSettings.maintainAspectRatio) {
+					if (newW > modeW) {
+						scalePercent = newW / modeW;
+						if ((modeH * scalePercent) > newH) {
+							scalePercent = newH / modeH;
 						}
 					}
 
-					newW = ((modeW)*scalePercent);
-					newH = ((modeH)*scalePercent);
+					newW = ((modeW) * scalePercent);
+					newH = ((modeH) * scalePercent);
 				}
 			}
 
 			$('#mainHolder').css('width', newW);
 			$('#mainHolder').css('height', newH);
 
-			$('#mainHolder').css('left', (windowW/2)-(newW/2));
-			$('#mainHolder').css('top', (windowH/2)-(newH/2));
-		}else{
-			if(gameData.mode == 'portrait'){
+			$('#mainHolder').css('left', (windowW / 2) - (newW / 2));
+			$('#mainHolder').css('top', (windowH / 2) - (newH / 2));
+		} else {
+			if (gameData.mode == 'portrait') {
 				newW = screenSettings.portraitW;
 				newH = screenSettings.portraitH;
-				scalePercent = newW/screenSettings.portraitW;
-			}else{
+				scalePercent = newW / screenSettings.portraitW;
+			} else {
 				scalePercent = 1;
 			}
 
@@ -152,7 +132,7 @@ function resizeGameFunc(){
 
 		resizeGameDetail();
 
-		if(typeof memberData != 'undefined' && memberSettings.enableMembership){
+		if (typeof memberData != 'undefined' && memberSettings.enableMembership) {
 			resizeMemberDetail();
 		}
 	}, 300);
@@ -163,18 +143,18 @@ function resizeGameFunc(){
  * DETECT SCREEN SIZE - This is the function that runs to detect screen size
  *
  */
-function detectScreenSize(){
-	if($.browser.mobile || isTablet){
+function detectScreenSize() {
+	if ($.browser.mobile || isTablet) {
 		if (window.matchMedia("(orientation: landscape)").matches) {
 			modeW = screenSettings.stageW;
 			modeH = screenSettings.stageH;
 			return false;
-		}else{
+		} else {
 			modeW = screenSettings.portraitW;
 			modeH = screenSettings.portraitH;
 			return true;
 		}
-	}else{
+	} else {
 		modeW = screenSettings.stageW;
 		modeH = screenSettings.stageH;
 		return false;

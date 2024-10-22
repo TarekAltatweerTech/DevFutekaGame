@@ -246,8 +246,26 @@ function buildGameButton() {
 	$('#buttonStart').click(function () {
 		$(this).addClass('disabledbutton');
 		playSound('soundClick');
-		//goPage('game');
-        goPage('game');
+		axios.post("/start_in_webview", {
+		}).then(response =>{
+			if(response.data.data == 1){
+				goPage('game');
+			}else{
+				goPage('main');
+                $(this).hide();
+				$('.preloadText').html('لا يسمح لك الدخول للعبة حاليا');
+                $('.preloadText').show();
+			}
+		})
+		.catch(error => {
+			if(error.response.status == 401){
+				goPage('main');
+                $(this).hide();
+				$('.preloadText').html('لا يسمح لك الدخول للعبة حاليا');
+                $('.preloadText').show();
+			}
+			//console.log(error);
+		})
 		// if(typeof memberData != 'undefined' && memberSettings.enableMembership){
 		// 	if(checkMemberProceed()){
 		// 		if(memberData.category){
