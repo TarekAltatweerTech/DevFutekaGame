@@ -3,11 +3,11 @@
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 50 55" style="enable-background:new 0 0 50 55;" xml:space="preserve">
 <style type="text/css">
-	.st0{fill:#1F2893;}
-	.st1{fill:#4A53C6;}
-	.st2{clip-path:url(#SVGID_00000145736591534736945550000004195823617157425087_);fill:#3340C1;}
+	.st0{fill:#007A41;}
+	.st1{fill:#2C975F;}
+	.st2{clip-path:url(#SVGID_00000145736591534736945550000004195823617157425087_);fill:#2C975F;}
 	.st3{fill-rule:evenodd;clip-rule:evenodd;fill:#FFFFFF;}
-	.st4{clip-path:url(#SVGID_00000137814689592119368470000017124102185824781719_);fill:#3340C1;}
+	.st4{clip-path:url(#SVGID_00000137814689592119368470000017124102185824781719_);fill:#2C975F;}
 </style>
 <g>
 	<path class="st0" d="M50,45c0,5.5-4.5,10-10,10H10C4.5,55,0,50.5,0,45V15C0,9.5,4.5,5,10,5h30c5.5,0,10,4.5,10,10V45z"/>
@@ -19,7 +19,7 @@
 		<clipPath id="SVGID_00000034806967772350691030000013884781620162891928_">
 			<use xlink:href="#SVGID_1_"  style="overflow:visible;"/>
 		</clipPath>
-		<polygon style="clip-path:url(#SVGID_00000034806967772350691030000013884781620162891928_);fill:#3340C1;" points="49,2.4 3,50 
+		<polygon style="clip-path:url(#SVGID_00000034806967772350691030000013884781620162891928_);fill:#007A41;" points="49,2.4 3,50
 			55.8,50 		"/>
 	</g>
 </g>
@@ -43,7 +43,7 @@
 	<clipPath id="SVGID_00000012447823599263000120000016205597489086807205_">
 		<use xlink:href="#SVGID_00000075121926153012073440000011744014642294634928_"  style="overflow:visible;"/>
 	</clipPath>
-	<polygon style="clip-path:url(#SVGID_00000012447823599263000120000016205597489086807205_);fill:#3340C1;" points="1047,162.7 
+	<polygon style="clip-path:url(#SVGID_00000012447823599263000120000016205597489086807205_);fill:#007A41;" points="1047,162.7
 		1001,210.2 1053.8,210.2 	"/>
 </g>
 </svg>

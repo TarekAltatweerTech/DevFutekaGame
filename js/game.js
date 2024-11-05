@@ -82,7 +82,7 @@ var videoProperty = {
 var answersProperty = {
 	fontSize: 40,
 	lineHeight: 40,
-	color: "#fff",
+	color: "#000",
 	align: "center",
 	width: 30,
 	height: 14,
@@ -92,8 +92,8 @@ var answersProperty = {
 var answersButtonProperty = {
 	status: true, //toggle answer button background
 	roundNumber: 15, //answer button background round corner number
-	color: "#a2cd4a", //answer button background colour
-	shadowColor: "#6fad4e", //answer button background shadow colour
+	color: "#ffffff", //answer button background colour
+	shadowColor: "#007A41", //answer button background shadow colour
 	answerdColor: "#f89a31", //answered button background colour
 	answerdShadowColor: "#dc4832", //answered button background shadow colour
 	wrongColor: "#989898", //answered button background colour
