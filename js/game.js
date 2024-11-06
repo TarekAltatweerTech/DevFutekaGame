@@ -58,8 +58,8 @@ var timerSettings = {
 
 //question property
 var questionProperty = {
-	fontSize: 50,
-	lineHeight: 58,
+	fontSize: 32,
+	lineHeight: 40,
 	color: "#fff",
 	top: 25,
 	left: 5,
@@ -80,7 +80,7 @@ var videoProperty = {
 
 //answers property
 var answersProperty = {
-	fontSize: 40,
+	fontSize: 32,
 	lineHeight: 40,
 	color: "#000",
 	align: "center",
