@@ -464,7 +464,8 @@ async function goPage(page) {
                         $('#statusScore').html(resultSettings.loseText.replace('[NUMBER]', score));
                         $('.itemWinnerCup img').attr('src', url_win + '/assets/looser.svg');
                     }
-                    score_final = playerData.score >= avg_score ? playerData.score : 0;
+                    //score_final = playerData.score >= avg_score ? playerData.score : 0;
+                    score_final = playerData.score;
                     // // set score
                     // $('#resultScore').html(resultSettings.scoreText.replace('[NUMBER]', score));
                 }).catch(error => {
