@@ -94,10 +94,10 @@ var answersButtonProperty = {
 	roundNumber: 15, //answer button background round corner number
 	color: "#ffffff", //answer button background colour
 	shadowColor: "#007A41", //answer button background shadow colour
-	answerdColor: "#f89a31", //answered button background colour
-	answerdShadowColor: "#dc4832", //answered button background shadow colour
-	wrongColor: "#989898", //answered button background colour
-	wrongShadowColor: "#666", //answered button background shadow colour
+	answerdColor: "#007A41", //answered button background colour
+	answerdShadowColor: "#007A41", //answered button background shadow colour
+	wrongColor: "#dc4832", //answered button background colour
+	wrongShadowColor: "##dc4832", //answered button background shadow colour
 };
 
 //audio settings
